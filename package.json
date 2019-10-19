@@ -19,6 +19,7 @@
     "express": "^4.17.1",
     "express-ip": "^1.0.3",
     "gulp-concat": "^2.6.1",
+    "gulp-remember": "^1.0.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "twig": "^1.13.3",

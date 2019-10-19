@@ -5,18 +5,22 @@ import nodeSass from 'node-sass';
 import postcss from 'gulp-postcss';
 import modules from 'postcss-modules';
 import concat from 'gulp-concat';
+import remember from 'gulp-remember';
 
 gulpSass.compiler = nodeSass;
 
-function css() {
-  /*return gulp.src('*.scss')
+function scss() {
+  return gulp.src(["src/**/*.scss"], { sourcemaps: true, since: gulp.lastRun(scss) })
     .pipe(gulpSass.sync())
-    .pipe(gulp.dest('./build/css'));*/
-  return gulp.src(["src/**/*.scss"], { sourcemaps: true, since: gulp.lastRun(css) })
-  .pipe(gulpSass.sync())
-  .pipe(gulp.dest('./build/css'))
-  .pipe(postcss([modules()]))
-  .pipe(concat('styles.css'));
+    .pipe(gulp.dest('./build/'));
 }
 
-export default gulp.parallel(css)
+function cssModules() {
+  return gulp.src('build/**/*.css')
+    .pipe(postcss([modules()]))
+    .pipe(remember('cssModules'))
+    .pipe(concat('styles.css'))
+    .pipe(gulp.dest('./build/'));
+}
+
+export default gulp.series(scss, cssModules)
