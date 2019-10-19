@@ -7,7 +7,14 @@ export function TopNav(props) {
 
   return (
     <div className={styles.container}>
+      <div className={styles.content}>
+        <div className={styles.search}>
 
+        </div>
+        <div className={styles.theme}>
+
+        </div>
+      </div>
     </div>
   )
 }

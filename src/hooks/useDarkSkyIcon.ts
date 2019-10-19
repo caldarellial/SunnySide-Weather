@@ -49,14 +49,10 @@ const infoMap: any = {
 }
 
 export function useDarkSkyIcon(icon: string) {
-  const [info, setInfo] = useState(null);
+  const [info, setInfo] = useState(infoMap[icon]);
 
   useEffect(() => {
-    if (icon in infoMap) {
-      setInfo(infoMap[icon]);
-    } else {
-      setInfo(null);
-    }
+    setInfo(infoMap[icon]);
   }, [icon]);
 
   return { info };

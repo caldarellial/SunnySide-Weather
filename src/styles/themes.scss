@@ -37,14 +37,16 @@ $themes: (
     textPrimary: $pallet-gray--500,
     textInverted: $pallet-white,
     cardColor: $pallet-white,
-    divider: $pallet-gray--100
+    divider: $pallet-gray--100,
+    topNavBackground: $pallet-blue--400
   ),
   dark: (
     backgroundColor: $pallet-gray--400,
     textPrimary: $pallet-white,
     textInverted: $pallet-gray--500,
     cardColor: $pallet-gray--400,
-    divider: $pallet-gray--300
+    divider: $pallet-gray--300,
+    topNavBackground: $pallet-gray--500
   )
 );
 
