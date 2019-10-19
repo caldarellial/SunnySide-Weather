@@ -7,7 +7,7 @@ body {
   font-family: $font-family--primary;
 
   .content {
-    padding: $content-width--16;
+    padding: $content-spacing--16;
   
     @include respond-to(phones) {
       width: 100%;

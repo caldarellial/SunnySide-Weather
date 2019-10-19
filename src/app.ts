@@ -14,7 +14,7 @@ interface Request extends ExpressRequest {
 }
 
 // Configuration//
-app.set('views', `${__dirname}/src/views`);
+app.set('views', `${__dirname}/views`);
 app.set('view engine', 'twig');
 
 // Middleware //
