@@ -6,7 +6,8 @@ import nodeSass from 'node-sass';
 gulpSass.compiler = nodeSass;
 
 function css() {
-  return gulp.src('./*.scss')
+  return gulp.src('*.scss')
+    .pipe(gulpSass.sync())
     .pipe(gulp.dest('./build/css'));
 }
 

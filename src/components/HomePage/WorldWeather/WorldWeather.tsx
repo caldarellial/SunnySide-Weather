@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import CurrentCard from '../../CurrentCard/CurrentCard';
+
+const styles = require('./WorldWeather.scss');
 
 const shortcuts = {
   'Boston': [42.3600825, -71.0588801],
@@ -22,9 +24,9 @@ export function WorldWeather(props: any) {
   }
 
   return (
-    <React.Fragment>
+    <div className={styles.container}>
       {render}
-    </React.Fragment>
+    </div>
   );
 }
 

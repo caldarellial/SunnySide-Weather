@@ -1,9 +1,13 @@
 {% extends './base.twig' %}
 
 {% block content %}
-  <div id="topnav"></div>
+  <div id="homepage"></div>
   <div>
   This is a test
   {{ ipInfo }}
   </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src='../components/HomePage/HomePage.tsx'></script>
 {% endblock %}
