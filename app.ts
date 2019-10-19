@@ -9,6 +9,10 @@ dotenv.config();
 
 const app = express();
 
+interface Request extends ExpressRequest {
+  ipInfo: any;
+}
+
 // Configuration//
 app.set('views', `${__dirname}/src/views`);
 app.set('view engine', 'twig');
@@ -17,7 +21,7 @@ app.set('view engine', 'twig');
 app.use(expressIp().getIpInfoMiddleware); // Fails when IP is localhost
 
 // Endpoints //
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
   if (req.ipInfo.zipcode) {
     res.redirect(`/location/${req.ipInfo.zipcode}`);
   }
@@ -25,13 +29,9 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.get('/home', (req, res) => {
-  res.render('index');
-});
-
-app.get('/location/:zip?', (req, res) => {
+app.get('/location/:zip?', (req: Request, res: Response) => {
   const location = zipcodes.lookup(req.params.zip);
-  const {latitude, longitude} = location;
+  const {latitude, longitude} = location!;
 
   res.render('location', {
     zipcode: req.params.zip,
