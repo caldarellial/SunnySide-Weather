@@ -12,7 +12,7 @@ export function WeatherIndicator(props: WeatherIndicatorProps) {
 
   return (
     <div>
-      <i className={['fa', info.icon].join(' ')} />
+      <i className={['fas', info.icon].join(' ')} />
     </div>
   );
 }

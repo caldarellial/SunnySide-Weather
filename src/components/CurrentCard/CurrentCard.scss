@@ -1,0 +1,13 @@
+@import '../../styles/index.scss';
+
+.weather {
+  @include themify($themes) {
+    color: themed('textPrimary');
+  }
+}
+
+.city {
+  @include themify($themes) {
+    background: themed('textPrimary');
+  }
+}

@@ -7,43 +7,43 @@ interface IconInfo {
 
 const infoMap: any = {
   'clear-day': {
-    icon: 'fas-sun',
+    icon: 'fa-sun',
     description: 'Clear'
   },
   'clear-night': {
-    icon: 'fas-moon',
+    icon: 'fa-moon',
     description: 'Clear'
   },
   'rain': {
-    icon: 'fas-cloud-rain',
+    icon: 'fa-cloud-rain',
     description: 'Rain'
   },
   'snow': {
-    icon: 'fas-snowflake',
+    icon: 'fa-snowflake',
     description: 'Snow'
   },
   'sleet': {
-    icon: 'fas-cloud-meatball',
+    icon: 'fa-cloud-meatball',
     description: 'Sleet'
   },
   'wind': {
-    icon: 'fas-wind',
+    icon: 'fa-wind',
     description: 'Windy'
   },
   'fog': {
-    icon: 'fas-smog',
+    icon: 'fa-smog',
     description: 'Fog'
   },
   'cloudy': {
-    icon: 'fas-cloud',
+    icon: 'fa-cloud',
     description: 'Cloudy'
   },
   'partly-cloudy-day': {
-    icon: 'fas-cloud-sun',
+    icon: 'fa-cloud-sun',
     description: 'Partly Cloudy'
   },
   'partly-cloudy-night': {
-    icon: 'fas-cloud-moon',
+    icon: 'fa-cloud-moon',
     description: 'Partly Cloudy'
   }
 }

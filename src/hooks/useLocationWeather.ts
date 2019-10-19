@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
 export function useLocationWeather(latitude: number, longitude: number, currentOnly?: boolean) {
-  const [weather, setWeather] = useState(null);
+  const [weather, setWeather]: [any, (weather: any) => any] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError]: [any, (error: any) => any] = useState(null);
 
   useEffect(() => {
     setLoading(true);

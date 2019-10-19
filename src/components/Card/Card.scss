@@ -24,47 +24,18 @@
 
     &._align {
       &__center {
-        .contentGroup {
-          display: flex;
-          justify-content: center;
-        }
+        display: flex;
+        justify-content: center;
       }
 
       &__start {
-        .contentGroup {
-          display: flex;
-          justify-content: flex-start;
-        }
+        display: flex;
+        justify-content: flex-start;
       }
 
       &__end {
-        .contentGroup {
-          display: flex;
-          justify-content: flex-end;
-        }
-      }
-    }
-
-    .contentGroup {
-      &:not(:last-of-type) {
-        padding-bottom: $content-spacing--16;
-      }
-
-      &._align {
-        &__center {
-          display: flex;
-          justify-content: center;
-        }
-  
-        &__start {
-          display: flex;
-          justify-content: flex-start;
-        }
-  
-        &__end {
-          display: flex;
-          justify-content: flex-end;
-        }
+        display: flex;
+        justify-content: flex-end;
       }
     }
   }

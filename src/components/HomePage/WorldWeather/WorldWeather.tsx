@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useLocationWeather } from '../../../hooks';
+import CurrentCard from '../../CurrentCard/CurrentCard';
 
 const shortcuts = {
   'Boston': [42.3600825, -71.0588801],
@@ -16,14 +16,16 @@ export function WorldWeather(props: any) {
   let render = [];
 
   for (const [key, val] of Object.entries(shortcuts)) {
-    const localWeather = useLocationWeather(val[0], val[1], true);
-    
     render.push(
-      <div>
-        <div>{key}</div>
-      </div>
-    )
+      <CurrentCard city={key} latitude={val[0]} longitude={val[1]} />
+    );
   }
 
-  return render;
+  return (
+    <React.Fragment>
+      {render}
+    </React.Fragment>
+  );
 }
+
+export default WorldWeather;
