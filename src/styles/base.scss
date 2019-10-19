@@ -1,0 +1,20 @@
+@import './index.scss';
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: $font-family--primary;
+
+  .content {
+    padding: $content-width--16;
+  
+    @include respond-to(phones) {
+      width: 100%;
+    }
+  
+    @include respond-to(desktop) {
+      width: $max-content-width;
+    }
+  }
+}

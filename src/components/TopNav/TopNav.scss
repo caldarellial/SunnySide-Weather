@@ -1,4 +1,22 @@
+@import '../../styles/index.scss';
+
 .container {
   width: 100%;
   display: flex;
+
+  .content {
+    padding: $content-spacing--16;
+
+    @include respond-to(phones) {
+      width: 100%;
+    }
+
+    @include respond-to(desktop) {
+      width: $max-content-width;
+    }
+  }
+
+  @include themify($themes) {
+    background: themed('topNavBackground');
+  }
 }

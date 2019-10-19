@@ -1,1 +1,26 @@
-// Weather //
+// Layout //
+$max-content-width: 1024px;
+$content-spacing--256: 256px;
+$content-spacing--128: 128px;
+$content-spacing--64: 64px;
+$content-spacing--32: 32px;
+$content-spacing--24: 24px;
+$content-spacing--16: 16px;
+$content-spacing--8: 8px;
+$content-spacing--4: 4px;
+
+// Text //
+$font-family--primary: 'Quicksand', sans-serif;
+
+// Responsiveness //
+$query-desktop: "(min-width: 768px)";
+$query-phone: "(max-width: 767px)";
+
+@mixin respond-to($media) {
+  @if $media == desktops {
+    @media #{$query-desktop} { @content; }
+  }
+  @else if $media == phones {
+    @media #{$query-phone} { @content; }
+  }
+}

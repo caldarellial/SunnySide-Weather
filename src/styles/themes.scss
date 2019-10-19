@@ -1,0 +1,72 @@
+// Pallets //
+$pallet-blue--500: #0c4f7f;
+$pallet-blue--400: #07c;
+$pallet-blue--300: #46a2e4;
+$pallet-blue--200: #8ec7f1;
+$pallet-blue--100: #c9e4f8;
+$pallet-brown--500: #4f4944;
+$pallet-brown--400: #7e756d;
+$pallet-brown--300: #b8aca1;
+$pallet-brown--200: #d9d0c8;
+$pallet-brown--100: #f4f0ed;
+$pallet-gray--500: #1a2325;
+$pallet-gray--400: #3e4648;
+$pallet-gray--300: #6c7274;
+$pallet-gray--200: #b2b8b9;
+$pallet-gray--100: #f1f4f5;
+$pallet-green--500: #045131;
+$pallet-green--400: #06844f;
+$pallet-green--300: #30b97f;
+$pallet-green--200: #69d7a8;
+$pallet-green--100: #c7f3e0;
+$pallet-red--500: #a80e0e;
+$pallet-red--400: #d03333;
+$pallet-red--300: #e86c6c;
+$pallet-red--200: #eea4a4;
+$pallet-red--100: #f7e5e5;
+$pallet-yellow--500: #e58b03;
+$pallet-yellow--400: #ffaa2a;
+$pallet-yellow--300: #ffc42b;
+$pallet-yellow--200: #ffe39a;
+$pallet-yellow--100: #fff6d8;
+$pallet-white: #fff;
+
+$themes: (
+  light: (
+    backgroundColor: $pallet-white,
+    textPrimary: $pallet-gray--500,
+    textInverted: $pallet-white,
+    cardColor: $pallet-white,
+    divider: $pallet-gray--100,
+    topNavBackground: $pallet-blue--400
+  ),
+  dark: (
+    backgroundColor: $pallet-gray--400,
+    textPrimary: $pallet-white,
+    textInverted: $pallet-gray--500,
+    cardColor: $pallet-gray--400,
+    divider: $pallet-gray--300,
+    topNavBackground: $pallet-gray--500
+  )
+);
+
+@mixin themify($themes: $themes) {
+  @each $theme, $map in $themes {
+
+    :global(.theme-#{$theme}) & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+
+      @content;
+      $theme-map: null !global;
+    }
+
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}

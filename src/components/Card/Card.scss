@@ -1,4 +1,4 @@
-@import '../../styles/styles.scss';
+@import '../../styles/index.scss';
 
 .container{
   border-radius:4px;
@@ -13,76 +13,35 @@
         @include themify($themes) {
           border-bottom: 1px solid themed('divider');
         }
-
-        &__strong {
-          @include themify($themes) {
-            border-bottom: 1px solid themed('dividerStrong');
-          }
-        }
       }
 
       &__top {
         @include themify($themes) {
           border-top: 1px solid themed('divider');
         }
-
-        &__strong {
-          @include themify($themes) {
-            border-top: 1px solid themed('dividerStrong');
-          }
-        }
       }
     }
 
     &._align {
       &__center {
-        .contentGroup {
-          display: flex;
-          justify-content: center;
-        }
+        display: flex;
+        justify-content: center;
       }
 
       &__start {
-        .contentGroup {
-          display: flex;
-          justify-content: flex-start;
-        }
+        display: flex;
+        justify-content: flex-start;
       }
 
       &__end {
-        .contentGroup {
-          display: flex;
-          justify-content: flex-end;
-        }
-      }
-    }
-
-    .contentGroup {
-      &:not(:last-of-type) {
-        padding-bottom: $content-spacing--16;
-      }
-
-      &._align {
-        &__center {
-          display: flex;
-          justify-content: center;
-        }
-  
-        &__start {
-          display: flex;
-          justify-content: flex-start;
-        }
-  
-        &__end {
-          display: flex;
-          justify-content: flex-end;
-        }
+        display: flex;
+        justify-content: flex-end;
       }
     }
   }
 
   @include themify($themes) {
     color: themed('textPrimary');
-    background: themed('panelColor');
+    background: themed('cardColor');
   }
 }
