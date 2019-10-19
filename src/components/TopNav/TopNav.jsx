@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import styles from './TopNav.scss';
+const styles = require('./TopNav.scss');
 
 export function TopNav(props) {
   const [query, setQuery] = useState('');

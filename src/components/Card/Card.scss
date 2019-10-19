@@ -1,4 +1,4 @@
-@import '../../styles/styles.scss';
+@import '../../styles/index.scss';
 
 .container{
   border-radius:4px;
@@ -13,23 +13,11 @@
         @include themify($themes) {
           border-bottom: 1px solid themed('divider');
         }
-
-        &__strong {
-          @include themify($themes) {
-            border-bottom: 1px solid themed('dividerStrong');
-          }
-        }
       }
 
       &__top {
         @include themify($themes) {
           border-top: 1px solid themed('divider');
-        }
-
-        &__strong {
-          @include themify($themes) {
-            border-top: 1px solid themed('dividerStrong');
-          }
         }
       }
     }
@@ -83,6 +71,6 @@
 
   @include themify($themes) {
     color: themed('textPrimary');
-    background: themed('panelColor');
+    background: themed('cardColor');
   }
 }
