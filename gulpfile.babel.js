@@ -5,8 +5,9 @@ import nodeSass from 'node-sass';
 
 gulpSass.compiler = nodeSass;
 
-gulp.task('sass', () =>
-  gulp.src('./*.scss')
-  .pipe(gulpSass.on())
-  .pipe(gulp.dest('./css'))
-);
+function css() {
+  return gulp.src('./*.scss')
+    .pipe(gulp.dest('./build/css'));
+}
+
+export default gulp.parallel(css)

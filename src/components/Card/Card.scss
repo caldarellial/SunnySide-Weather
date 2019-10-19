@@ -1,0 +1,88 @@
+@import '../../styles/styles.scss';
+
+.container{
+  border-radius:4px;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+
+  .section {
+    padding: $content-spacing--32 $content-spacing--64;
+
+    &._border {
+      &__bottom {
+        @include themify($themes) {
+          border-bottom: 1px solid themed('divider');
+        }
+
+        &__strong {
+          @include themify($themes) {
+            border-bottom: 1px solid themed('dividerStrong');
+          }
+        }
+      }
+
+      &__top {
+        @include themify($themes) {
+          border-top: 1px solid themed('divider');
+        }
+
+        &__strong {
+          @include themify($themes) {
+            border-top: 1px solid themed('dividerStrong');
+          }
+        }
+      }
+    }
+
+    &._align {
+      &__center {
+        .contentGroup {
+          display: flex;
+          justify-content: center;
+        }
+      }
+
+      &__start {
+        .contentGroup {
+          display: flex;
+          justify-content: flex-start;
+        }
+      }
+
+      &__end {
+        .contentGroup {
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+    }
+
+    .contentGroup {
+      &:not(:last-of-type) {
+        padding-bottom: $content-spacing--16;
+      }
+
+      &._align {
+        &__center {
+          display: flex;
+          justify-content: center;
+        }
+  
+        &__start {
+          display: flex;
+          justify-content: flex-start;
+        }
+  
+        &__end {
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+
+  @include themify($themes) {
+    color: themed('textPrimary');
+    background: themed('panelColor');
+  }
+}
