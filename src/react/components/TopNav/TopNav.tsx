@@ -6,17 +6,30 @@ const styles = require('./TopNav.scss');
 
 export function TopNav(props: any) {
   const [query, setQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
   const [location, setLocation] = useState(null);
 
   useEffect(() => {
     const locationResult = zipcodes.lookup(query);
 
     if (locationResult) {
-      
+      setLocation(location);
+      fetch(`search/${query}`)
+        .then((response) => response.json())
+        .then((data) => setSearchResults(data))
+        .catch((err) => {
+
+        }).finally(() => {
+
+        });
     } else {
       setLocation(null);
     }
   }, [query]);
+
+  useEffect(() => {
+    console.log(searchResults);
+  }, [searchResults]);
 
   return (
     <div className={styles.container}>
@@ -35,4 +48,4 @@ export function TopNav(props: any) {
   )
 }
 
-ReactDOM.render(<HomePage />, document.getElementById('topnav'));
+ReactDOM.render(<TopNav />, document.getElementById('topnav'));
