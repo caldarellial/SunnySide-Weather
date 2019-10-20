@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Card, Section } from '../components/Card/Card';
-import WorldWeather from '../components/HomePage/WorldWeather/WorldWeather';
+import WorldWeather from '../components/WorldWeather/WorldWeather';
 
 export function HomePage(props: any) {
   return (

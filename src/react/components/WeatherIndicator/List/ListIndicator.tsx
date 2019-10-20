@@ -4,12 +4,12 @@ import { useDarkSkyIcon } from '../../../hooks';
 
 const styles = require('./ListIndicator.scss');
 
-interface WeatherIndicatorProps {
+interface WeatherListIndicatorProps {
   children: any;
   weather: any;
 }
 
-export function WeatherIndicator(props: WeatherIndicatorProps) {
+export function WeatherListIndicator(props: WeatherListIndicatorProps) {
   const { info } = useDarkSkyIcon(props.weather.icon);
 
   return (
@@ -19,4 +19,4 @@ export function WeatherIndicator(props: WeatherIndicatorProps) {
   );
 }
 
-export default WeatherIndicator;
+export default WeatherListIndicator;

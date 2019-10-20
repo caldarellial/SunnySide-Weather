@@ -7,12 +7,14 @@
   </head>
 
   <body>
-    <div id="topnav"></div>
+    <div id="topnav" class='reactContainer'></div>
 
     <div class="content">
       {% block content %}{% endblock %}
     </div>
 
     {% block scripts %}{% endblock %}
+
+    <script src='react/components/TopNav/TopNav.js'></script>
   </body>
 </html>

@@ -12,6 +12,7 @@ const uglify = require('gulp-uglify');
 const replace = require('gulp-replace');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
+const tap = require('gulp-tap');
 
 gulpSass.compiler = nodeSass;
 
@@ -63,4 +64,20 @@ function browserifyTask() {
     .pipe(gulp.dest('./build/react/screens'));
 }
 
-exports.default = gulp.series(scss, cssModules, typescript, handleCssImports, twig, browserifyTask)
+function browserifyFull() {
+  return gulp.src('build/react/**/*.js', {read: false}) // no need of reading file because browserify does.
+
+    // transform file objects using gulp-tap plugin
+    .pipe(tap(function (file) {
+
+      console.log('bundling ' + file.path);
+
+      // replace file contents with browserify's bundle stream
+      file.contents = browserify(file.path, {debug: true}).bundle();
+
+    }))
+    .pipe(buffer())
+    .pipe(gulp.dest('build/react'));
+}
+
+exports.default = gulp.series(scss, cssModules, typescript, handleCssImports, twig, browserifyFull)

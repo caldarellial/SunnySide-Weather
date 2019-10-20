@@ -38,7 +38,8 @@ $themes: (
     textInverted: $pallet-white,
     cardColor: $pallet-white,
     divider: $pallet-gray--100,
-    topNavBackground: $pallet-blue--400
+    topNavBackground: $pallet-blue--400,
+    textTopNav: $pallet-white
   ),
   dark: (
     backgroundColor: $pallet-gray--400,
@@ -46,7 +47,8 @@ $themes: (
     textInverted: $pallet-gray--500,
     cardColor: $pallet-gray--400,
     divider: $pallet-gray--300,
-    topNavBackground: $pallet-gray--500
+    topNavBackground: $pallet-gray--500,
+    textTopNav: $pallet-white
   )
 );
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CurrentCard from '../../CurrentCard/CurrentCard';
+import CurrentCard from '../CurrentCard/CurrentCard';
 
 const styles = require('./WorldWeather.scss');
 

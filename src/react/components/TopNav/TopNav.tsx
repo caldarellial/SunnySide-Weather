@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import zipcodes from 'zipcodes';
+import Autocomplete from '@material-ui/core';
 
 const styles = require('./TopNav.scss');
 
@@ -10,20 +10,18 @@ export function TopNav(props: any) {
   const [location, setLocation] = useState(null);
 
   useEffect(() => {
-    const locationResult = zipcodes.lookup(query);
-
-    if (locationResult) {
-      setLocation(location);
+    if (query) {
       fetch(`search/${query}`)
-        .then((response) => response.json())
-        .then((data) => setSearchResults(data))
-        .catch((err) => {
+      .then((response) => response.json())
+      .then((data) => setSearchResults(data))
+      .catch((err) => {
+ 
+      }).finally(() => {
 
-        }).finally(() => {
-
-        });
+      });
     } else {
       setLocation(null);
+      setSearchResults([]);
     }
   }, [query]);
 
@@ -34,13 +32,15 @@ export function TopNav(props: any) {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <div className={styles.search}>
-          <input type='number' onChange={(event) => setQuery(event.target.value)}></input>
+        <div className={styles.logoContainer}>
+          <i className={['fas fa-cloud-meatball', styles.icon].join(' ')} />
+          <p className={styles.title}>Meatball</p>
         </div>
-        <div className={styles.result}>
-
+        <div className={styles.searchContainer}>
+          <input className={styles.search} type='text' onChange={(event) => setQuery(event.target.value)}></input>
+          <i className={['fas fa-search', styles.icon].join(' ')} />
         </div>
-        <div className={styles.theme}>
+        <div className={styles.themeContainer}>
 
         </div>
       </div>

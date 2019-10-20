@@ -3,9 +3,16 @@
 .container {
   width: 100%;
   display: flex;
+  justify-content: center;
+
+  @include themify($themes) {
+    background: themed('topNavBackground');
+  }
 
   .content {
     padding: $content-spacing--16;
+    display: flex;
+    align-items: center;
 
     @include respond-to(phones) {
       width: 100%;
@@ -14,9 +21,54 @@
     @include respond-to(desktops) {
       width: $max-content-width;
     }
-  }
 
-  @include themify($themes) {
-    background: themed('topNavBackground');
+    .logoContainer {
+      flex-grow: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: $content-spacing--4;
+
+      @include themify($themes) {
+        color: themed('textTopNav');
+      }
+
+      .icon {
+        font-size: 24px;
+      }
+
+      .title {
+        font-weight: 500;
+        font-size: $font-size--medium;
+        text-align: center;
+        margin: 0;
+      }
+    }
+
+    .searchContainer {
+      flex-grow: 1;
+      display: flex;
+      position: relative;
+
+      .search {
+        font-family: $font-family--primary;
+        flex-grow: 1;
+        padding: $content-spacing--4;
+        border: 0;
+        border-radius: 4px;
+      }
+
+      .icon {
+        flex-grow: 0;
+        position: absolute;
+        right: $content-spacing--4;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    .themeContainer {
+      flex-grow: 0;
+    }
   }
 }
