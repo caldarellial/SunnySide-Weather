@@ -3,7 +3,7 @@
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   font-family: $font-family--primary;
 
   .content {
@@ -13,7 +13,7 @@ body {
       width: 100%;
     }
   
-    @include respond-to(desktop) {
+    @include respond-to(desktops) {
       width: $max-content-width;
     }
   }

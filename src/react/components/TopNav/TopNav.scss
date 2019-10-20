@@ -1,4 +1,4 @@
-@import '../../styles/index.scss';
+@import '../../../styles/index.scss';
 
 .container {
   width: 100%;
@@ -11,7 +11,7 @@
       width: 100%;
     }
 
-    @include respond-to(desktop) {
+    @include respond-to(desktops) {
       width: $max-content-width;
     }
   }

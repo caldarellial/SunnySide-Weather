@@ -18,21 +18,28 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-ip": "^1.0.3",
+    "gulp-replace": "^1.0.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "twig": "^1.13.3",
     "typescript": "^3.6.4",
+    "vinyl-buffer": "^1.0.1",
     "zipcodes": "^8.0.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
+    "browserify": "^16.5.0",
     "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
     "gulp-postcss": "^8.0.0",
+    "gulp-remember": "^1.0.1",
     "gulp-sass": "^4.0.2",
+    "gulp-typescript": "^5.0.1",
+    "gulp-uglify": "^3.0.2",
     "node-sass": "^4.12.0",
     "postcss-modules": "^1.4.1",
     "ts-node": "^8.4.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-remember": "^1.0.1",
-    "gulp-typescript": "^5.0.1"
+    "vinyl-source-stream": "^2.0.0"
   }
 }

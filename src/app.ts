@@ -1,9 +1,10 @@
 import { Request as ExpressRequest, Response } from 'express';
-import dotenv from 'dotenv';
 import zipcodes from 'zipcodes';
+import path from 'path';
 
 const express = require('express');
 const expressIp = require('express-ip');
+const dotenv = require('dotenv');
 
 dotenv.config();
 
@@ -19,6 +20,8 @@ app.set('view engine', 'twig');
 
 // Middleware //
 app.use(expressIp().getIpInfoMiddleware); // Fails when IP is localhost
+app.use('/styles', express.static(path.join(__dirname, 'styles')));
+app.use('/react', express.static(path.join(__dirname, 'react')));
 
 // Endpoints //
 app.get('/', (req: Request, res: Response) => {
