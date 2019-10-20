@@ -1,17 +1,13 @@
 import { Request as ExpressRequest, Response } from 'express';
-import geocoder from 'node-geocoder';
 import path from 'path';
 
 const express = require('express');
 const expressIp = require('express-ip');
 const dotenv = require('dotenv');
 
-dotenv.config();
+import { geocoder } from './services';
 
-const geocoderInstance = geocoder({
-  provider: 'google',
-  apiKey: process.env.GOOGLE_KEY
-});
+dotenv.config();
 
 const app = express();
 
@@ -31,32 +27,45 @@ app.use('/react', express.static(path.join(__dirname, 'react')));
 // Endpoints //
 app.get('/', (req: Request, res: Response) => {
   if (req.ipInfo.zipcode) {
-    res.redirect(`/location/${req.ipInfo.zipcode}`);
+    geocoder.search(req.ipInfo.zipcode)
+      .then((data) => {
+        return res.redirect(`/location/${data.results[0].place_id}`);
+      })
+  } else {
+    res.render('index');
   }
-
-  res.render('index');
 });
 
-app.get('/location/:zip?', (req: Request, res: Response) => {
-  geocoderInstance.geocode({zipcode: req.params.zip}).then((result) => {
-    const {latitude, longitude} = result[0];
+app.get('/location/:placeId?', (req: Request, res: Response) => {
+  const { placeId } = req.params;
 
-    res.render('location', {
-      zipcode: req.params.zip,
-      latitude,
-      longitude
-    });
-  }).catch(() => {
-    res.render('index');
-  });
+  if (!placeId) {
+    return res.redirect('/');
+  }
+
+  geocoder.details(placeId)
+    .then((data) => {
+      const {lat, lon} = data.result.geometry.location;
+
+      res.render('location', {
+        zipcode: req.params.zip,
+        lat,
+        lon
+      });
+    })
+    .catch(() => res.render('index'));
 });
 
 app.get('/search/:query?', (req: Request, res: Response) => {
-  geocoderInstance.geocode(req.params.query).then((result) => {
-    res.status(200).json(result);
-  }).catch(() => {
-    res.status(400).send('Error searching');
-  })
+  const { query } = req.params;
+
+  if (!query) {
+    return res.status(400).send('Query must be submitted');
+  }
+
+  geocoder.search(query)
+    .then((data) => res.status(200).json(data))
+    .catch((err) => res.status(400).send(err.toString()));
 })
 
 app.listen(3000);
