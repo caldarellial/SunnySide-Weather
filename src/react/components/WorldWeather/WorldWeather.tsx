@@ -25,7 +25,10 @@ export function WorldWeather(props: any) {
 
   return (
     <div className={styles.container}>
-      {render}
+      <p className={styles.title}>Weather Around the World</p>
+      <div className={styles.content}>
+       {render}
+      </div>
     </div>
   );
 }

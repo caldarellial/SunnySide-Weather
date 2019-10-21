@@ -23,7 +23,7 @@ function scss() {
 }
 
 function cssModules() {
-  return gulp.src('build/**/*.css')
+  return gulp.src(['build/**/*.css', '!build/styles/base.css'])
     .pipe(postcss([modules()]))
     .pipe(remember('cssModules'))
     .pipe(concat('modules.css'))

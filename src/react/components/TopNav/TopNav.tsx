@@ -13,7 +13,7 @@ export function TopNav(props: any) {
   const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [location, setLocation] = useState(null);
-  const [activeFetch, setActiveFetch] = useState();
+  const [abortController, setAbortController] = useState();
 
   const localStorage = useLocalStorage();
   const [activeTheme, setActiveTheme] = useState(localStorage.get('theme')||'light');
@@ -21,20 +21,23 @@ export function TopNav(props: any) {
 
   useEffect(() => {
     if (query) {
-      const currentFetch = fetch(`search/${query}`)
+      if (abortController) {
+        abortController.abort();
+      }
+
+      const newAbortController = new AbortController();
+      setAbortController(newAbortController);
+
+      fetch(`search/${query}`, {signal: newAbortController.signal})
         .then((response) => response.json())
         .then((data) => {
-          if (activeFetch === currentFetch) {
-            setSearchResults(data);
-          }
+          setSearchResults(data);
         })
         .catch((err) => {
   
         }).finally(() => {
 
         });
-
-      setActiveFetch(currentFetch);
     } else {
       setLocation(null);
       setSearchResults([]);

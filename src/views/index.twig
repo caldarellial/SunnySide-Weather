@@ -1,13 +1,11 @@
 {% extends './base.twig' %}
 
 {% block content %}
+  <div id="welcome" class='reactContainer'></div>
   <div id="homepage" class='reactContainer'></div>
-  <div>
-  This is a test
-  {{ ipInfo }}
-  </div>
 {% endblock %}
 
 {% block scripts %}
   <script src='react/screens/HomePage.js'></script>
+  <script src='react/components/Welcome/Welcome.js'></script>
 {% endblock %}

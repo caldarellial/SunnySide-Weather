@@ -1,13 +1,25 @@
 @import '../../../styles/index.scss';
 
-.weather {
-  @include themify($themes) {
-    color: themed('textPrimary');
-  }
-}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 
-.city {
-  @include themify($themes) {
-    background: themed('textPrimary');
+  .weather {
+    font-size: $font-size--medium;
+  }
+
+  .icon {
+    display: block;
+    font-size: $icon-size--weather;
+  }
+
+  .temperature {
+    font-size: $font-size--small;
+  }
+  
+  .city {
+    font-size: $font-size--large;
   }
 }

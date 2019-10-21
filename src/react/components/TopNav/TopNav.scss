@@ -35,13 +35,17 @@
 
       .icon {
         font-size: $icon-size--large;
+
+        @include respond-to(phones) {
+          display: none;
+        }
       }
 
       .title {
         font-weight: 500;
         font-size: $font-size--medium;
         text-align: center;
-        margin: 0;
+        margin: 0 0 0 4px;
 
         @include respond-to(phones) {
           display: none;
@@ -84,7 +88,11 @@
       }
 
       .icon {
-        font-size: $icon-size--normal;
+        font-size: $icon-size--medium;
+
+        @include respond-to(phones) {
+          font-size: $icon-size--large;
+        }
       }
 
       .title {
