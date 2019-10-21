@@ -45,7 +45,7 @@
         font-weight: 500;
         font-size: $font-size--medium;
         text-align: center;
-        margin: 0 0 0 4px;
+        margin: 0;
 
         @include respond-to(phones) {
           display: none;
@@ -99,7 +99,7 @@
         font-weight: 400;
         font-size: $font-size--small;
         text-align: center;
-        margin: 0;
+        margin: 0 0 0 4px;
 
         @include respond-to(phones) {
           display: none;
