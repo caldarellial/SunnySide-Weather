@@ -10,7 +10,6 @@ export function ErrorIndicator(props: ErrorProps) {
   return (
     <div className={styles.container}>
       <i className={[styles.icon, 'fas fa-exclamation-triangle'].join(' ')} />
-      <span>{props.error}</span>
     </div>
   );
 }

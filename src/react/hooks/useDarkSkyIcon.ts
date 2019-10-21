@@ -5,7 +5,11 @@ interface IconInfo {
   description: string;
 }
 
-const infoMap: any = {
+interface IconMap {
+  [key: string]: IconInfo
+};
+
+const infoMap: IconMap = {
   'clear-day': {
     icon: 'fa-sun',
     description: 'Clear'
@@ -48,11 +52,15 @@ const infoMap: any = {
   }
 }
 
-export function useDarkSkyIcon(icon: string) {
-  const [info, setInfo] = useState(infoMap[icon]);
+export function useDarkSkyIcon(icon: string): {info: IconMap|null} {
+  const [info, setInfo]: [IconMap|null, any] = useState(null);
 
   useEffect(() => {
-    setInfo(infoMap[icon]);
+    if (!infoMap[icon]) {
+      setInfo(null);
+    } else {
+      setInfo(infoMap[icon]);
+    }
   }, [icon]);
 
   return { info };

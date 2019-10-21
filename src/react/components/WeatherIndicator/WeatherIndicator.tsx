@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { useDarkSkyIcon } from '../../hooks';
+import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
 
 interface WeatherIndicatorProps {
   children: any;
@@ -10,9 +11,15 @@ interface WeatherIndicatorProps {
 export function WeatherIndicator(props: WeatherIndicatorProps) {
   const { info } = useDarkSkyIcon(props.weather.icon);
 
+  if (!props.weather) {
+    return (
+      <LoadingIndicator />
+    );
+  }
+
   return (
     <div>
-      <i className={['fas', info.icon].join(' ')} />
+      <i className={['fas', info!.icon].join(' ')} />
     </div>
   );
 }

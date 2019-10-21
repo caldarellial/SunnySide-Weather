@@ -16,7 +16,7 @@ body {
     align-items: center;
 
     .content {
-      padding: $content-spacing--4;
+      padding: $content-spacing--16 $content-spacing--8;
     }
   
     @include respond-to(phones) {

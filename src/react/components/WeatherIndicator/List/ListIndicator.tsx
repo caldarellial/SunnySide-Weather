@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { useDarkSkyIcon } from '../../../hooks';
+import LoadingIndicator from '../../LoadingIndicator/LoadingIndicator';
 
 const styles = require('./ListIndicator.scss');
 
@@ -12,9 +13,15 @@ interface WeatherListIndicatorProps {
 export function WeatherListIndicator(props: WeatherListIndicatorProps) {
   const { info } = useDarkSkyIcon(props.weather.icon);
 
+  if (!props.weather) {
+    return (
+      <LoadingIndicator />
+    );
+  }
+
   return (
     <div className={styles.container}>
-      <i className={['fa', info.icon].join(' ')} />
+      <i className={['fa', info!.icon].join(' ')} />
     </div>
   );
 }

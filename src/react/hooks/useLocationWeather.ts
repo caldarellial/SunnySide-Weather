@@ -8,18 +8,21 @@ export function useLocationWeather(latitude: number, longitude: number, currentO
   useEffect(() => {
     setLoading(true);
 
-    let reqUrl = `https://api.darksky.net/forecast/${process.env.API_KEY}/${latitude},${longitude}`;
+    let reqUrl = `weather/${latitude}/${longitude}`;
 
     if (currentOnly) {
-      reqUrl = `${reqUrl}?exclude=${['minutely', 'hourly', 'daily'].join(',')}`;
+      reqUrl = `${reqUrl}?currentOnly=true`;
     }
 
     fetch(reqUrl)
-      .then((response: any) => {
-        setWeather(response);
+    .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setWeather(data);
         setError(null);
       })
       .catch((error: any) => {
+        console.log(error);
         setError(error);
         setWeather(null);
       })
