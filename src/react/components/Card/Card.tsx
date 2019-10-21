@@ -16,8 +16,8 @@ export function Card(props: CardProps){
 
 interface SectionProps {
   children: any;
-  borderTop?: boolean;
   borderBottom?: boolean;
+  borderBottomStrong?: boolean;
   alignCenter?: boolean;
   alignEnd?: boolean;
   alignStart?: boolean;
@@ -26,8 +26,8 @@ interface SectionProps {
 export function Section(props: SectionProps) {
   const classes = [
     styles.section,
-    props.borderTop ? styles._border__top : undefined,
     props.borderBottom ? styles._border__bottom : undefined,
+    props.borderBottomStrong ? styles._border__bottom__strong : undefined,
     props.alignStart ? styles._align__start : undefined,
     props.alignCenter ? styles._align__center : undefined,
     props.alignEnd ? styles._align__end : undefined

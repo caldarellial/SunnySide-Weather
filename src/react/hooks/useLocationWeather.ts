@@ -8,7 +8,7 @@ export function useLocationWeather(latitude: number, longitude: number, currentO
   useEffect(() => {
     setLoading(true);
 
-    let reqUrl = `weather/${latitude}/${longitude}`;
+    let reqUrl = `/weather/${latitude}/${longitude}`;
 
     if (currentOnly) {
       reqUrl = `${reqUrl}?currentOnly=true`;

@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
+import {
+  useLocationWeather
+} from '../hooks';
 import { Card, Section } from '../components/Card/Card';
+import LocationHeader from '../components/LocationHeader/LocationHeader';
 
-export function LocationPage(props: any) {
+interface LocationPageProps {
+  location: any;
+}
+
+export function LocationPage(props: LocationPageProps) {
+  const location = props.location;
+  const {lat, lng} = location.geometry.location;
+  const {weather, loading, error} = useLocationWeather(lat, lng);
+
   return (
     <Card>
+      <Section borderBottomStrong>
+        <LocationHeader location={location} />
+      </Section>
       <Section borderBottom>
 
       </Section>
@@ -16,4 +31,7 @@ export function LocationPage(props: any) {
   );
 }
 
-ReactDOM.render(<LocationPage />, document.getElementById('locationDetails'));
+const pageElement = document.getElementById('locationDetails');
+
+if (pageElement)
+  ReactDOM.render(<LocationPage location={{...JSON.parse(pageElement.dataset.location!.toString())}} />, pageElement);
