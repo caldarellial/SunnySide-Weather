@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Card, Section } from '../Card/Card';
-import WorldWeather from './WorldWeather/WorldWeather';
+import { Card, Section } from '../components/Card/Card';
+import WorldWeather from '../components/WorldWeather/WorldWeather';
 
 export function HomePage(props: any) {
   return (
@@ -17,4 +17,4 @@ export function HomePage(props: any) {
   );
 }
 
-ReactDOM.hydrate(<HomePage />, document.getElementById('homepage'));
+ReactDOM.render(<HomePage />, document.getElementById('homepage'));

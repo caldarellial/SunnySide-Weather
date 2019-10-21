@@ -1,7 +1,7 @@
 {% extends './base.twig' %}
 
 {% block content %}
-  <div id="homepage"></div>
+  <div id="homepage" class='reactContainer'></div>
   <div>
   This is a test
   {{ ipInfo }}
@@ -9,5 +9,5 @@
 {% endblock %}
 
 {% block scripts %}
-  <script src='../components/HomePage/HomePage.tsx'></script>
+  <script src='react/screens/HomePage.js'></script>
 {% endblock %}

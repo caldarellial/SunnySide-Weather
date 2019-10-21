@@ -3,8 +3,13 @@
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   font-family: $font-family--primary;
+  margin: 0;
+
+  .reactContainer {
+    width: 100%;
+  }
 
   .content {
     padding: $content-spacing--16;
@@ -13,7 +18,7 @@ body {
       width: 100%;
     }
   
-    @include respond-to(desktop) {
+    @include respond-to(desktops) {
       width: $max-content-width;
     }
   }

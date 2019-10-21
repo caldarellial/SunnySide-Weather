@@ -1,9 +1,11 @@
 import { Request as ExpressRequest, Response } from 'express';
-import dotenv from 'dotenv';
-import zipcodes from 'zipcodes';
+import path from 'path';
 
 const express = require('express');
 const expressIp = require('express-ip');
+const dotenv = require('dotenv');
+
+import { geocoder } from './services';
 
 dotenv.config();
 
@@ -19,25 +21,51 @@ app.set('view engine', 'twig');
 
 // Middleware //
 app.use(expressIp().getIpInfoMiddleware); // Fails when IP is localhost
+app.use('/styles', express.static(path.join(__dirname, 'styles')));
+app.use('/react', express.static(path.join(__dirname, 'react')));
 
 // Endpoints //
 app.get('/', (req: Request, res: Response) => {
   if (req.ipInfo.zipcode) {
-    res.redirect(`/location/${req.ipInfo.zipcode}`);
+    geocoder.search(req.ipInfo.zipcode)
+      .then((data) => {
+        return res.redirect(`/location/${data.results[0].place_id}`);
+      })
+  } else {
+    res.render('index');
+  }
+});
+
+app.get('/location/:placeId?', (req: Request, res: Response) => {
+  const { placeId } = req.params;
+
+  if (!placeId) {
+    return res.redirect('/');
   }
 
-  res.render('index');
+  geocoder.details(placeId)
+    .then((data) => {
+      const {lat, lon} = data.result.geometry.location;
+
+      res.render('location', {
+        zipcode: req.params.zip,
+        lat,
+        lon
+      });
+    })
+    .catch(() => res.render('index'));
 });
 
-app.get('/location/:zip?', (req: Request, res: Response) => {
-  const location = zipcodes.lookup(req.params.zip);
-  const {latitude, longitude} = location!;
+app.get('/search/:query?', (req: Request, res: Response) => {
+  const { query } = req.params;
 
-  res.render('location', {
-    zipcode: req.params.zip,
-    latitude,
-    longitude
-  });
-});
+  if (!query) {
+    return res.status(400).send('Query must be submitted');
+  }
+
+  geocoder.search(query)
+    .then((data) => res.status(200).json(data))
+    .catch((err) => res.status(400).send(err.toString()));
+})
 
 app.listen(3000);
