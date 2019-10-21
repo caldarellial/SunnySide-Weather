@@ -8,9 +8,11 @@
 
   <body>
     <div id="topnav" class='reactContainer'></div>
-
-    <div class="content">
-      {% block content %}{% endblock %}
+    
+    <div class="contentContainer">
+      <div class="content">
+        {% block content %}{% endblock %}
+      </div>
     </div>
 
     {% block scripts %}{% endblock %}

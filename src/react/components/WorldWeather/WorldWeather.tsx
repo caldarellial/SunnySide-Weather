@@ -19,7 +19,7 @@ export function WorldWeather(props: any) {
 
   for (const [key, val] of Object.entries(shortcuts)) {
     render.push(
-      <CurrentCard city={key} latitude={val[0]} longitude={val[1]} />
+      <CurrentCard key={key} city={key} latitude={val[0]} longitude={val[1]} />
     );
   }
 

@@ -22,8 +22,8 @@ $icon-size--medium: 16px;
 $icon-size--large: 24px;
 
 // Responsiveness //
-$query-desktop: "(min-width: 768px)";
-$query-phone: "(max-width: 767px)";
+$query-desktop: "(min-width: #{$max-content-width})";
+$query-phone: "(max-width: #{$max-content-width - 1})";
 
 @mixin respond-to($media) {
   @if $media == desktops {
