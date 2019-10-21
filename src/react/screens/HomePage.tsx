@@ -7,9 +7,6 @@ import WorldWeather from '../components/WorldWeather/WorldWeather';
 export function HomePage(props: any) {
   return (
     <Card>
-      <Section borderBottom>
-
-      </Section>
       <Section>
         <WorldWeather></WorldWeather>
       </Section>

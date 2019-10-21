@@ -7,12 +7,21 @@ body {
   font-family: $font-family--primary;
   margin: 0;
 
+  @include themify($themes, true, true) {
+    background: themed('backgroundColor');
+  }
+
   .reactContainer {
     width: 100%;
   }
 
-  .content {
-    padding: $content-spacing--16;
+  .contentContainer {
+    display: flex;
+    align-items: center;
+  
+    .content {
+      padding: $content-spacing--16 $content-spacing--8;
+    }
   
     @include respond-to(phones) {
       width: 100%;

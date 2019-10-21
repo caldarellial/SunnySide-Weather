@@ -14,22 +14,27 @@ $font-family--primary: 'Quicksand', sans-serif;
 $font-size--small: 11px;
 $font-size--medium: 14px;
 $font-size--large: 18px;
+$font-weight--light: 300;
+$font-weight--regular: 400;
+$font-weight--medium: 500;
+$font-weight--bold: 700;
 
 // Iconography
 $icon-size--small: 8px;
 $icon-size--normal: 12px;
 $icon-size--medium: 16px;
 $icon-size--large: 24px;
+$icon-size--weather: 34px;
 
 // Responsiveness //
-$query-desktop: "(min-width: 768px)";
-$query-phone: "(max-width: 767px)";
+$query-device--desktop: "(min-width: #{$max-content-width})";
+$query-device--phone: "(max-width: #{$max-content-width - 1})";
 
 @mixin respond-to($media) {
   @if $media == desktops {
-    @media #{$query-desktop} { @content; }
+    @media #{$query-device--desktop} { @content; }
   }
   @else if $media == phones {
-    @media #{$query-phone} { @content; }
+    @media #{$query-device--phone} { @content; }
   }
 }

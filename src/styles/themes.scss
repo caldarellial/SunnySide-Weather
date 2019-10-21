@@ -31,9 +31,12 @@ $pallet-yellow--200: #ffe39a;
 $pallet-yellow--100: #fff6d8;
 $pallet-white: #fff;
 
+$logo-color--sun: $pallet-yellow--300;
+$logo-color--cloud: $pallet-white;
+
 $themes: (
   light: (
-    backgroundColor: $pallet-white,
+    backgroundColor: $pallet-gray--100,
     textPrimary: $pallet-gray--500,
     textInverted: $pallet-white,
     cardColor: $pallet-white,
@@ -52,20 +55,45 @@ $themes: (
   )
 );
 
-@mixin themify($themes: $themes) {
+@mixin themify($themes: $themes, $global: false, $body: false) {
   @each $theme, $map in $themes {
 
-    :global(.theme-#{$theme}) & {
-      $theme-map: () !global;
-      @each $key, $submap in $map {
-        $value: map-get(map-get($themes, $theme), '#{$key}');
-        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+    @if $global {
+      @if $body {
+        &.theme-#{$theme} {
+          $theme-map: () !global;
+          @each $key, $submap in $map {
+            $value: map-get(map-get($themes, $theme), '#{$key}');
+            $theme-map: map-merge($theme-map, ($key: $value)) !global;
+          }
+    
+          @content;
+          $theme-map: null !global;
+        }
+      } @else {
+        .theme-#{$theme} & {
+          $theme-map: () !global;
+          @each $key, $submap in $map {
+            $value: map-get(map-get($themes, $theme), '#{$key}');
+            $theme-map: map-merge($theme-map, ($key: $value)) !global;
+          }
+    
+          @content;
+          $theme-map: null !global;
+        }
       }
-
-      @content;
-      $theme-map: null !global;
+    } @else {
+      :global(.theme-#{$theme}) & {
+        $theme-map: () !global;
+        @each $key, $submap in $map {
+          $value: map-get(map-get($themes, $theme), '#{$key}');
+          $theme-map: map-merge($theme-map, ($key: $value)) !global;
+        }
+  
+        @content;
+        $theme-map: null !global;
+      }
     }
-
   }
 }
 

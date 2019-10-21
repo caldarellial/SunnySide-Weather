@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
+import { Logo } from '../Logo/Logo';
 import {
   useLocalStorage,
   usePrevious
@@ -12,7 +13,7 @@ export function TopNav(props: any) {
   const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [location, setLocation] = useState(null);
-  const [activeFetch, setActiveFetch] = useState();
+  const [abortController, setAbortController] = useState();
 
   const localStorage = useLocalStorage();
   const [activeTheme, setActiveTheme] = useState(localStorage.get('theme')||'light');
@@ -20,20 +21,23 @@ export function TopNav(props: any) {
 
   useEffect(() => {
     if (query) {
-      const currentFetch = fetch(`search/${query}`)
+      if (abortController) {
+        abortController.abort();
+      }
+
+      const newAbortController = new AbortController();
+      setAbortController(newAbortController);
+
+      fetch(`search/${query}`, {signal: newAbortController.signal})
         .then((response) => response.json())
         .then((data) => {
-          if (activeFetch === currentFetch) {
-            setSearchResults(data);
-          }
+          setSearchResults(data);
         })
         .catch((err) => {
   
         }).finally(() => {
 
         });
-
-      setActiveFetch(currentFetch);
     } else {
       setLocation(null);
       setSearchResults([]);
@@ -57,8 +61,8 @@ export function TopNav(props: any) {
     <div className={styles.container}>
       <div className={styles.content}>
         <div className={styles.logoContainer}>
-          <i className={['fas fa-cloud-meatball', styles.icon].join(' ')} />
-          <p className={styles.title}>Meatball</p>
+          <Logo color={activeTheme === 'light' ? 'colorized' : 'normal'} />
+          <p className={styles.title}>SunnySide</p>
         </div>
         <div className={styles.searchContainer}>
           <input className={styles.search} type='text' onChange={(event) => setQuery(event.target.value)}></input>

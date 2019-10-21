@@ -6,6 +6,7 @@ import {
   useDarkSkyIcon,
   useLocationWeather
 } from '../../hooks';
+import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
 
 const styles = require('./CurrentCard.scss');
 
@@ -18,24 +19,22 @@ interface CurrentCardProps {
 
 export function CurrentCard(props: CurrentCardProps) {
   const { weather, loading, error } = useLocationWeather(props.latitude, props.longitude, true);
-
-  if (weather) {
-    const { info } = useDarkSkyIcon(weather.icon);
-  }
+  const { info } = useDarkSkyIcon(weather ? weather.currently.icon : null);
 
   function renderWeather() {
     return (
       <React.Fragment>
         <div className={styles.city}>{props.city}</div>
-        <div className={styles.temperature}></div>
-        <div className={styles.weather}></div>
+        {info ? <i className={['fas', info!.icon, styles.icon].join(' ')} /> : <LoadingIndicator />}
+        <div className={styles.weather}>{weather.currently.summary}</div>
+        <div className={styles.temperature}>{weather.currently.temperature}° F</div>
       </React.Fragment>
     );
   }
 
   function renderLoading() {
     return (
-      <i className="fas fa-spinner fa-pulse"></i>
+      <LoadingIndicator />
     );
   }
 
@@ -46,13 +45,11 @@ export function CurrentCard(props: CurrentCardProps) {
   }
 
   return (
-    <Card>
-      <Section alignCenter>
-        {loading && renderLoading()}
-        {weather && renderWeather()}
-        {error && renderError()}
-      </Section>
-    </Card>
+    <div className={styles.container}>
+      {!!loading && renderLoading()}
+      {!!weather && renderWeather()}
+      {!!error && renderError()}
+    </div>
   );
 }
 

@@ -5,7 +5,10 @@ const express = require('express');
 const expressIp = require('express-ip');
 const dotenv = require('dotenv');
 
-import { geocoder } from './services';
+import { 
+  geocoder,
+  darksky
+} from './services';
 
 dotenv.config();
 
@@ -66,6 +69,15 @@ app.get('/search/:query?', (req: Request, res: Response) => {
   geocoder.search(query)
     .then((data) => res.status(200).json(data))
     .catch((err) => res.status(400).send(err.toString()));
+});
+
+app.get('/weather/:lat?/:lon?', (req: Request, res: Response) => {
+  const { lat, lon } = req.params;
+  const { currentOnly } = req.query;
+
+  darksky.fetch(lat, lon, !!currentOnly)
+    .then((data) => res.status(200).json(data))
+    .catch((err) => res.status(400).send(err));
 })
 
 app.listen(3000);

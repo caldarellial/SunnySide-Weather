@@ -1,0 +1,57 @@
+@import '../../../styles/index.scss';
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .sun {
+    font-size: 0.7em;
+    position: absolute;
+    transform: translateY(10%);
+  }
+
+  &.size_normal {
+    font-size: 24px;
+  }
+
+  &.size_xl {
+    font-size: 256px;
+  }
+
+  &.color_normal {
+    .sun {
+      @include themify($themes) {
+        color: themed('textInverted');
+      }
+    }
+    .cloud {
+      @include themify($themes) {
+        color: themed('textPrimary');
+      }
+    }
+  }
+
+  &.color_inverted {
+    .sun {
+      @include themify($themes) {
+        color: themed('textPrimary');
+      }
+    }
+    .cloud {
+      @include themify($themes) {
+        color: themed('textInverted');
+      }
+    }
+  }
+
+  &.color_colorized {
+    .sun {
+      color: $logo-color--sun;
+    }
+    .cloud {
+      color: $logo-color--cloud;
+    }
+  }
+}

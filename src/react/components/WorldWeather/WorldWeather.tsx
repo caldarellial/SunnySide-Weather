@@ -19,13 +19,16 @@ export function WorldWeather(props: any) {
 
   for (const [key, val] of Object.entries(shortcuts)) {
     render.push(
-      <CurrentCard city={key} latitude={val[0]} longitude={val[1]} />
+      <CurrentCard key={key} city={key} latitude={val[0]} longitude={val[1]} />
     );
   }
 
   return (
     <div className={styles.container}>
-      {render}
+      <p className={styles.title}>Weather Around the World</p>
+      <div className={styles.content}>
+       {render}
+      </div>
     </div>
   );
 }

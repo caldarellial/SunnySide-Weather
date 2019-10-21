@@ -1,10 +1,17 @@
 @import '../../../styles/index.scss';
 
 .container {
-  display: flex;
-  flex-wrap: 1;
+  .content {
+    display: flex;
+    flex-wrap: wrap;
 
-  > * {
-    margin: $content-spacing--16;
+    > * {
+      margin: $content-spacing--16;
+    }
+  }
+  
+  .title {
+    font-size: $font-size--large;
+    margin: 0 0 8px 0;
   }
 }
