@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import Autocomplete from '@material-ui/core';
+
+import {
+  useLocalStorage,
+  usePrevious
+} from '../../hooks';
 
 const styles = require('./TopNav.scss');
 
@@ -8,17 +12,28 @@ export function TopNav(props: any) {
   const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [location, setLocation] = useState(null);
+  const [activeFetch, setActiveFetch] = useState();
+
+  const localStorage = useLocalStorage();
+  const [activeTheme, setActiveTheme] = useState(localStorage.get('theme')||'light');
+  const previousTheme = usePrevious(activeTheme);
 
   useEffect(() => {
     if (query) {
-      fetch(`search/${query}`)
-      .then((response) => response.json())
-      .then((data) => setSearchResults(data))
-      .catch((err) => {
- 
-      }).finally(() => {
+      const currentFetch = fetch(`search/${query}`)
+        .then((response) => response.json())
+        .then((data) => {
+          if (activeFetch === currentFetch) {
+            setSearchResults(data);
+          }
+        })
+        .catch((err) => {
+  
+        }).finally(() => {
 
-      });
+        });
+
+      setActiveFetch(currentFetch);
     } else {
       setLocation(null);
       setSearchResults([]);
@@ -28,6 +43,15 @@ export function TopNav(props: any) {
   useEffect(() => {
     console.log(searchResults);
   }, [searchResults]);
+
+  useEffect(() => {
+    if (previousTheme !== activeTheme) {
+      document.body.classList.remove(`theme-${previousTheme}`);
+    }
+    document.body.classList.add(`theme-${activeTheme}`);
+
+    localStorage.set('theme', activeTheme);
+  }, [activeTheme])
 
   return (
     <div className={styles.container}>
@@ -40,8 +64,11 @@ export function TopNav(props: any) {
           <input className={styles.search} type='text' onChange={(event) => setQuery(event.target.value)}></input>
           <i className={['fas fa-search', styles.icon].join(' ')} />
         </div>
-        <div className={styles.themeContainer}>
-
+        <div className={styles.themeContainer} onClick={
+          () => setActiveTheme(activeTheme === 'light' ? 'dark' : 'light')
+        }>
+          <i className={['fas', activeTheme === 'light' ? 'fa-sun' : 'fa-moon', styles.icon].join(' ')} />
+          <p className={styles.title}>{activeTheme} theme</p>
         </div>
       </div>
     </div>
