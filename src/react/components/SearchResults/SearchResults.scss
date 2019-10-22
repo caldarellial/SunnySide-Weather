@@ -20,9 +20,18 @@
     flex-direction: column;
 
     > .result {
-      padding: $content-spacing--8;
       text-decoration: none;
       font-size: $font-size--large;
+
+      @include useDevice(phones) {
+        padding: $content-spacing--16 $content-spacing--8;
+        font-weight: $font-weight--bold;
+      }
+
+      @include useDevice(desktops) {
+        padding: $content-spacing--8;
+        font-weight: $font-weight--medium;
+      }
 
       @include useTheme() {
         color: themed('textInverted');

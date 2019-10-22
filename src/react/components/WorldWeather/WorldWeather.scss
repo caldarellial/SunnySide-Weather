@@ -5,6 +5,10 @@
     display: flex;
     flex-wrap: wrap;
 
+    @include useDevice(phones) {
+      flex-direction: column;
+    }
+
     > * {
       margin: $content-spacing--16;
     }
