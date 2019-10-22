@@ -25,12 +25,12 @@ export function WeatherIndicator(props: WeatherIndicatorProps) {
 
     render.push(
       <React.Fragment>
-        {weather.temperatureHigh ? weather.temperatureHigh : weather.temperature}°
+        {weather.temperatureHigh ? Math.round(weather.temperatureHigh) : Math.round(weather.temperature)}°
       </React.Fragment>
     );
 
     if (weather.temperatureLow) {
-      render.push(<span className={styles.low}>{weather.temperatureLow}°</span>)
+      render.push(<span className={styles.low}>{Math.round(weather.temperatureLow)}°</span>)
     }
 
     return render;

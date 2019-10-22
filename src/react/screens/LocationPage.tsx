@@ -11,6 +11,8 @@ import ErrorIndicator from '../components/Error/Error';
 import TodayDetails from '../components/TodayDetails/TodayDetails';
 import DayWeatherListing from '../components/DayWeatherListing/DayWeatherListing';
 
+const styles = require('./LocationPage.scss');
+
 interface LocationPageProps {
   location: any;
 }
@@ -39,16 +41,16 @@ export function LocationPage(props: LocationPageProps) {
   function renderWeather() {
     const weekWeather = weather.daily.data.slice(1,8);
 
-    const days = weekWeather.map((day: any) => <DayWeatherListing weather={day} />);
-
-    console.log(days, <div></div>);
-
     return [
       <Section borderBottom>
         <TodayDetails weather={weather} />
       </Section>,
       <Section>
-        
+        {weekWeather.map((day: any) =>
+          <div className={styles.dayListing}>
+            <DayWeatherListing weather={day} />
+          </div>
+        )}
       </Section>
     ];
   }

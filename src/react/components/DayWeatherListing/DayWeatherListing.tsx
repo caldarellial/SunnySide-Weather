@@ -4,11 +4,11 @@ import { useDarkSkyIcon } from '../../hooks';
 
 const styles = require('./DayWeatherListing.scss');
 
-interface DayWeatherListing {
+interface DayWeatherListingProps {
   weather: any;
 }
 
-export function DayWeatherListing(props: DayWeatherListing) {
+export function DayWeatherListing(props: DayWeatherListingProps) {
   const [weather, setWeather] = useState(props.weather);
   const [day, setDay] = useState(moment(props.weather));
   const { info } = useDarkSkyIcon(weather.icon);
@@ -28,10 +28,10 @@ export function DayWeatherListing(props: DayWeatherListing) {
       </div>
       <div className={styles.temperature}>
         <div className={styles.high}>
-          {weather.temperatureHigh}
+          {Math.round(weather.temperatureHigh)}°
         </div>
         <div className={styles.low}>
-          {weather.temperatureLow}
+          {Math.round(weather.temperatureLow)}°
         </div>
       </div>
     </div>

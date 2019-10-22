@@ -22,15 +22,15 @@ export function TodayDetails(props: TodayDetailsProps) {
     let render = [
       <div className={styles.detail}>
         <div className={styles.title}>High</div>
-        <div className={styles.value}>{daily.temperatureHigh}°</div>
+        <div className={styles.value}>{Math.round(daily.temperatureHigh)}°</div>
       </div>,
       <div className={styles.detail}>
         <div className={styles.title}>Low</div>
-        <div className={styles.value}>{daily.temperatureLow}°</div>
+        <div className={styles.value}>{Math.round(daily.temperatureLow)}°</div>
       </div>,
       <div className={styles.detail}>
         <div className={styles.title}>Feels Like</div>
-        <div className={styles.value}>{currently.apparentTemperature}°</div>
+        <div className={styles.value}>{Math.round(currently.apparentTemperature)}°</div>
       </div>,
       <div className={styles.detail}>
         <div className={styles.title}>Chance of Rain</div>
