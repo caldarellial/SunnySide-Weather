@@ -17,7 +17,7 @@
     .link {
       margin-left: $content-spacing--4;
 
-      @include themify() {
+      @include useTheme() {
         color: themed('textPrimary');
       }
     }
@@ -27,7 +27,7 @@
     font-size: $icon-size--large;
   }
 
-  @include themify() {
+  @include useTheme() {
     color: themed('textPrimary');
     background: themed('cardColor');
     border: 1px solid themed('divider');

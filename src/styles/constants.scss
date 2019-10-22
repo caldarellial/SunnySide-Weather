@@ -28,10 +28,11 @@ $icon-size--large: 24px;
 $icon-size--weather: 34px;
 
 // Responsiveness //
-$query-device--desktop: "(min-width: #{$max-content-width})";
-$query-device--phone: "(max-width: #{$max-content-width - 1})";
+$phone-width: 768px;
+$query-device--desktop: "(min-width: #{$phone-width})";
+$query-device--phone: "(max-width: #{$phone-width - 1})";
 
-@mixin respond-to($media) {
+@mixin useDevice($media) {
   @if $media == desktops {
     @media #{$query-device--desktop} { @content; }
   }

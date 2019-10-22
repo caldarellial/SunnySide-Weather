@@ -17,7 +17,6 @@ export function useLocationWeather(latitude: number, longitude: number, currentO
     fetch(reqUrl)
     .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setWeather(data);
         setError(null);
       })

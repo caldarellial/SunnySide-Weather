@@ -33,7 +33,7 @@ app.get('/', (req: Request, res: Response) => {
     geocoder.search(`${req.ipInfo.city} ${req.ipInfo.region} ${req.ipInfo.country}`)
       .then((data) => {
         return res.render('index', {
-          detectedLocation: JSON.stringify(data.results[0])
+          detectedLocation: JSON.stringify(data.results[0]).replace(/'/g,"&#39;")
         });
       })
   } else {
@@ -54,7 +54,7 @@ app.get('/location/:placeId?', (req: Request, res: Response) => {
 
       res.render('location', {
         zipcode: req.params.zip,
-        location: JSON.stringify(location)
+        location: JSON.stringify(location).replace(/'/g,"&#39;")
       });
     })
     .catch(() => res.render('index'));

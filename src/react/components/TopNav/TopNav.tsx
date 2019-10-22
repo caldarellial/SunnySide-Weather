@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 
 import { Logo } from '../Logo/Logo';
@@ -6,6 +6,7 @@ import {
   useLocalStorage,
   usePrevious
 } from '../../hooks';
+import SearchResults from '../SearchResults/SearchResults';
 
 const styles = require('./TopNav.scss');
 
@@ -14,6 +15,7 @@ export function TopNav(props: any) {
   const [searchResults, setSearchResults] = useState([]);
   const [location, setLocation] = useState(null);
   const [abortController, setAbortController] = useState();
+  const searchInput: any = useRef(null);
 
   const localStorage = useLocalStorage();
   const [activeTheme, setActiveTheme] = useState(localStorage.get('theme')||'light');
@@ -31,22 +33,16 @@ export function TopNav(props: any) {
       fetch(`/search/${query}`, {signal: newAbortController.signal})
         .then((response) => response.json())
         .then((data) => {
-          setSearchResults(data);
+          setSearchResults(data.results);
         })
-        .catch((err) => {
-  
-        }).finally(() => {
-
+        .catch(() => {
+          setSearchResults([]);
         });
     } else {
       setLocation(null);
       setSearchResults([]);
     }
   }, [query]);
-
-  useEffect(() => {
-    console.log(searchResults);
-  }, [searchResults]);
 
   useEffect(() => {
     if (previousTheme !== activeTheme) {
@@ -57,25 +53,47 @@ export function TopNav(props: any) {
     localStorage.set('theme', activeTheme);
   }, [activeTheme])
 
+  function cancelSearchResults() {
+    setSearchResults([]);
+    if (searchInput && searchInput.current) {
+      searchInput.current!.value('');
+    }
+  }
+
   return (
-    <div className={styles.container}>
-      <div className={styles.content}>
-        <a className={styles.logoContainer} href='/'>
-          <Logo color={activeTheme === 'light' ? 'colorized' : 'normal'} />
-          <p className={styles.title}>SunnySide</p>
-        </a>
-        <div className={styles.searchContainer}>
-          <input className={styles.search} type='text' onChange={(event) => setQuery(event.target.value)}></input>
-          <i className={['fas fa-search', styles.icon].join(' ')} />
-        </div>
-        <div className={styles.themeContainer} onClick={
-          () => setActiveTheme(activeTheme === 'light' ? 'dark' : 'light')
-        }>
-          <i className={['fas', activeTheme === 'light' ? 'fa-sun' : 'fa-moon', styles.icon].join(' ')} />
-          <p className={styles.title}>{activeTheme} theme</p>
+    <React.Fragment>
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <a className={styles.logoContainer} href='/'>
+            <Logo color={activeTheme === 'light' ? 'colorized' : 'normal'} />
+            <p className={styles.title}>SunnySide</p>
+          </a>
+          <div className={styles.searchContainer}>
+            <input
+              className={styles.search}
+              type='text'
+              ref={searchInput}
+              onChange={(event) => setQuery(event.target.value)}
+            />
+            {searchResults.length == 0 && <i className={['fas fa-search', styles.icon].join(' ')} />}
+            {
+              searchResults.length > 0 &&
+              <i
+                className={['fas fa-times', styles.icon].join(' ')}
+                onClick={() => cancelSearchResults()} 
+              />
+            }
+          </div>
+          <div className={styles.themeContainer} onClick={
+            () => setActiveTheme(activeTheme === 'light' ? 'dark' : 'light')
+          }>
+            <i className={['fas', activeTheme === 'light' ? 'fa-sun' : 'fa-moon', styles.icon].join(' ')} />
+            <p className={styles.title}>{activeTheme} theme</p>
+          </div>
         </div>
       </div>
-    </div>
+      {searchResults.length > 0 && <SearchResults results={searchResults} />}
+    </React.Fragment>
   )
 }
 

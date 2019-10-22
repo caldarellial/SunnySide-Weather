@@ -3,7 +3,7 @@
 .container {
   display: flex;
 
-  @include respond-to(phones) {
+  @include useDevice(phones) {
     flex-direction: column;
     justify-content: center;
 
@@ -12,7 +12,7 @@
     }
   }
 
-  @include respond-to(desktops) {
+  @include useDevice(desktops) {
     flex-direction: row;
     
     > *:not(:last-child) {
