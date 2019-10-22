@@ -37,7 +37,7 @@
 
     @include useDevice(phones) {
       width: 100%;
-      padding-top: 96px;
+      padding-top: 64px;
     }
   
     @include useDevice(desktops) {
