@@ -6,7 +6,7 @@
   }
 
   &:not(:last-child) {
-    @include themify() {
+    @include useTheme() {
       padding-bottom: $content-spacing--8;
       border-bottom: 1px solid themed('divider');
     }

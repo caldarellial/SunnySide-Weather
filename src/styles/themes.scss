@@ -42,7 +42,8 @@ $themes: (
     cardColor: $pallet-white,
     divider: $pallet-gray--100,
     topNavBackground: $pallet-blue--400,
-    textTopNav: $pallet-white
+    textTopNav: $pallet-white,
+    searchBackground: rgba(0, 0, 0, .6)
   ),
   dark: (
     backgroundColor: $pallet-gray--400,
@@ -51,11 +52,12 @@ $themes: (
     cardColor: $pallet-gray--400,
     divider: $pallet-gray--300,
     topNavBackground: $pallet-gray--500,
-    textTopNav: $pallet-white
+    textTopNav: $pallet-white,
+    searchBackground: rgba($pallet-white, .6)
   )
 );
 
-@mixin themify($themes: $themes, $global: false, $body: false) {
+@mixin useTheme($themes: $themes, $global: false, $body: false) {
   @each $theme, $map in $themes {
 
     @if $global {

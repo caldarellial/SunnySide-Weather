@@ -1,0 +1,48 @@
+@import '../../../styles/index.scss';
+
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+
+  @include useTheme() {
+    background: themed('searchBackground');
+  }
+
+  .content {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    > .result {
+      padding: $content-spacing--8;
+      text-decoration: none;
+      font-size: $font-size--large;
+
+      @include useTheme() {
+        color: themed('textInverted');
+      }
+      
+      &:not(:last-child) {
+        @include useTheme() {
+          border-bottom: 1px solid themed('divider');
+        }
+      }
+    }
+
+    @include useDevice(phones) {
+      width: 100%;
+      padding-top: 96px;
+    }
+  
+    @include useDevice(desktops) {
+      width: $max-content-width;
+      padding-top: 82px;
+    }
+  }
+}

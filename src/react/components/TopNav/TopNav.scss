@@ -4,8 +4,10 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  position: fixed;
+  z-index: 100;
 
-  @include themify() {
+  @include useTheme() {
     background: themed('topNavBackground');
   }
 
@@ -14,11 +16,11 @@
     display: flex;
     align-items: center;
 
-    @include respond-to(phones) {
+    @include useDevice(phones) {
       width: 100%;
     }
 
-    @include respond-to(desktops) {
+    @include useDevice(desktops) {
       width: $max-content-width;
     }
 
@@ -30,14 +32,14 @@
       padding: $content-spacing--4;
       text-decoration: none;
 
-      @include themify() {
+      @include useTheme() {
         color: themed('textTopNav');
       }
 
       .icon {
         font-size: $icon-size--large;
 
-        @include respond-to(phones) {
+        @include useDevice(phones) {
           display: none;
         }
       }
@@ -48,7 +50,7 @@
         text-align: center;
         margin: 0;
 
-        @include respond-to(phones) {
+        @include useDevice(phones) {
           display: none;
         }
       }
@@ -84,14 +86,14 @@
       padding: $content-spacing--4;
       cursor: pointer;
 
-      @include themify() {
+      @include useTheme() {
         color: themed('textTopNav');
       }
 
       .icon {
         font-size: $icon-size--medium;
 
-        @include respond-to(phones) {
+        @include useDevice(phones) {
           font-size: $icon-size--large;
         }
       }
@@ -102,7 +104,7 @@
         text-align: center;
         margin: 0 0 0 4px;
 
-        @include respond-to(phones) {
+        @include useDevice(phones) {
           display: none;
         }
       }
