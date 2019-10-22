@@ -57,6 +57,7 @@ $themes: (
   )
 );
 
+// adapted from https://medium.com/@dmitriy.borodiy/easy-color-theming-with-scss-bc38fd5734d1 for use with CSS modules
 @mixin useTheme($themes: $themes, $global: false, $body: false) {
   @each $theme, $map in $themes {
 
