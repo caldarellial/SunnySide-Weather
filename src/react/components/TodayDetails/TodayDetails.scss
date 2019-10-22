@@ -1,0 +1,53 @@
+@import '../../../styles/index.scss';
+
+.container {
+  display: flex;
+
+  @include respond-to(phones) {
+    flex-direction: column;
+    justify-content: center;
+
+    > *:not(:last-child) {
+      margin-bottom: $content-spacing--8;
+    }
+  }
+
+  @include respond-to(desktops) {
+    flex-direction: row;
+    
+    > *:not(:last-child) {
+      margin-right: $content-spacing--8;
+    }
+  }
+
+  .summary {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-grow: 1;
+
+    > .detail {
+      width: 50%;
+      flex-grow: 0;
+      flex-shrink: 0;
+
+      .title {
+        font-size: $font-size--medium;
+        font-weight: $font-weight--light;
+      }
+
+      .value {
+        $font-size: $font-size--large;
+        font-weight: $font-weight--medium;
+      }
+    }
+  }
+}

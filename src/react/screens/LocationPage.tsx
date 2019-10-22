@@ -6,6 +6,9 @@ import {
 } from '../hooks';
 import { Card, Section } from '../components/Card/Card';
 import LocationHeader from '../components/LocationHeader/LocationHeader';
+import LoadingIndicator from '../components/LoadingIndicator/LoadingIndicator';
+import ErrorIndicator from '../components/Error/Error';
+import TodayDetails from '../components/TodayDetails/TodayDetails';
 
 interface LocationPageProps {
   location: any;
@@ -16,17 +19,41 @@ export function LocationPage(props: LocationPageProps) {
   const {lat, lng} = location.geometry.location;
   const {weather, loading, error} = useLocationWeather(lat, lng);
 
+  function renderLoading() {
+    return (
+      <Section alignCenter>
+        <LoadingIndicator />
+      </Section>
+    );
+  }
+
+  function renderError() {
+    return (
+      <Section alignCenter>
+        <ErrorIndicator error={error} />
+      </Section>
+    );
+  }
+
+  function renderWeather() {
+    return [
+      <Section borderBottom>
+        <TodayDetails weather={weather} />
+      </Section>,
+      <Section>
+
+      </Section>
+    ];
+  }
+
   return (
     <Card>
       <Section borderBottomStrong>
         <LocationHeader location={location} />
       </Section>
-      <Section borderBottom>
-
-      </Section>
-      <Section>
-
-      </Section>
+      {!!loading && renderLoading()}
+      {!!weather && renderWeather()}
+      {!!error && renderError()}
     </Card>
   );
 }

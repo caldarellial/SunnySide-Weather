@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import { Card, Section, ContentGroup } from '../Card/Card';
 import ErrorIndicator from '../Error/Error';
+import WeatherIndicator from '../WeatherIndicator/WeatherIndicator';
 import {
   useDarkSkyIcon,
   useLocationWeather
@@ -19,15 +19,12 @@ interface CurrentCardProps {
 
 export function CurrentCard(props: CurrentCardProps) {
   const { weather, loading, error } = useLocationWeather(props.latitude, props.longitude, true);
-  const { info } = useDarkSkyIcon(weather ? weather.currently.icon : null);
 
   function renderWeather() {
     return (
       <React.Fragment>
         <div className={styles.city}>{props.city}</div>
-        {info ? <i className={['fas', info!.icon, styles.icon].join(' ')} /> : <LoadingIndicator />}
-        <div className={styles.weather}>{weather.currently.summary}</div>
-        <div className={styles.temperature}>{weather.currently.temperature}° F</div>
+        <WeatherIndicator weather={weather.currently} />
       </React.Fragment>
     );
   }

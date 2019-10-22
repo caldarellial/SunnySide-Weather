@@ -25,8 +25,6 @@ export function LocationHeader(props: LocationHeaderProps) {
     }
 
     let newLabel = '';
-
-    console.log(addressComponents, city, state, country);
     
     if (city) {
       newLabel = appendToLabel(newLabel, city.long_name);
@@ -36,7 +34,7 @@ export function LocationHeader(props: LocationHeaderProps) {
       newLabel = appendToLabel(newLabel, state.short_name);
     }
 
-    if (country && country.short_name !== 'USA') {
+    if (country && country.short_name !== 'US') {
       newLabel = appendToLabel(newLabel, country.short_name);
     }
 
