@@ -15,7 +15,7 @@ export function DayWeatherListing(props: DayWeatherListingProps) {
 
   useEffect(() => {
     setWeather(props.weather);
-    setDay(moment(props.weather));
+    setDay(moment.unix(props.weather.time));
   }, [props.weather]);
 
   return (
