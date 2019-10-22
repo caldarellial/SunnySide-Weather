@@ -1,0 +1,35 @@
+@import '../../../styles/index.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  .temperature {
+    font-size: $font-size--small;
+  }
+
+  .weather {
+    font-size: $font-size--medium;
+  }
+
+  .icon {
+    display: block;
+    font-size: $icon-size--weather;
+  }
+
+  &.large {
+    .icon {
+      font-size: $icon-size--weather*2;
+    }
+    
+    .weather {
+      $font-size: $font-size--large;
+    }
+
+    .temperature {
+      $font-size: $font-size--medium;
+    }
+  }
+}

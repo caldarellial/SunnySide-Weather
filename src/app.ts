@@ -48,12 +48,11 @@ app.get('/location/:placeId?', (req: Request, res: Response) => {
 
   geocoder.details(placeId)
     .then((data) => {
-      const {lat, lon} = data.result.geometry.location;
+      const location = data.result;
 
       res.render('location', {
         zipcode: req.params.zip,
-        lat,
-        lon
+        location: JSON.stringify(location)
       });
     })
     .catch(() => res.render('index'));

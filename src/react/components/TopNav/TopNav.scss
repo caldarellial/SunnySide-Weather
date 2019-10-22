@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
 
-  @include themify($themes) {
+  @include themify() {
     background: themed('topNavBackground');
   }
 
@@ -29,7 +29,7 @@
       align-items: center;
       padding: $content-spacing--4;
 
-      @include themify($themes) {
+      @include themify() {
         color: themed('textTopNav');
       }
 
@@ -83,7 +83,7 @@
       padding: $content-spacing--4;
       cursor: pointer;
 
-      @include themify($themes) {
+      @include themify() {
         color: themed('textTopNav');
       }
 

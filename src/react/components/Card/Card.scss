@@ -10,14 +10,14 @@
 
     &._border {
       &__bottom {
-        @include themify($themes) {
+        @include themify() {
           border-bottom: 1px solid themed('divider');
         }
-      }
 
-      &__top {
-        @include themify($themes) {
-          border-top: 1px solid themed('divider');
+        &__strong {
+          @include themify() {
+            border-bottom: 1px solid themed('dividerStrong');
+          }
         }
       }
     }
@@ -40,7 +40,7 @@
     }
   }
 
-  @include themify($themes) {
+  @include themify() {
     color: themed('textPrimary');
     background: themed('cardColor');
   }

@@ -21,6 +21,7 @@ body {
   
     .content {
       padding: $content-spacing--16 $content-spacing--8;
+      width: 100%;
     }
   
     @include respond-to(phones) {

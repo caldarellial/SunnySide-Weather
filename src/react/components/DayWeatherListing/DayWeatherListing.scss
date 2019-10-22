@@ -1,0 +1,27 @@
+@import '../../../styles/index.scss';
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  font-size: $font-size--large;
+
+  .day {
+    font-weight: $font-weight--bold;
+    flex-basis: 100px;
+  }
+
+  .weather {
+    font-size: $icon-size--large;
+    display: flex;
+    justify-content: center;
+  }
+
+  .temperature {
+    display: flex;
+
+    .high {
+      margin-right: $content-spacing--8;
+      font-weight: $font-weight--medium;
+    }
+  }
+}

@@ -11,7 +11,7 @@
     display: block;
     margin-bottom: $content-spacing--8;
 
-    @include themify($themes) {
+    @include themify() {
       border-bottom: 1px solid themed('divider');
       color: themed('textPrimary');
     }
@@ -30,7 +30,7 @@
     .text {
       flex-grow: 1;
 
-      @include themify($themes) {
+      @include themify() {
         color: themed('textPrimary');
       }
     }

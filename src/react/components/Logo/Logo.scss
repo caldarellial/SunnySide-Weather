@@ -22,12 +22,12 @@
 
   &.color_normal {
     .sun {
-      @include themify($themes) {
+      @include themify() {
         color: themed('textInverted');
       }
     }
     .cloud {
-      @include themify($themes) {
+      @include themify() {
         color: themed('textPrimary');
       }
     }
@@ -35,12 +35,12 @@
 
   &.color_inverted {
     .sun {
-      @include themify($themes) {
+      @include themify() {
         color: themed('textPrimary');
       }
     }
     .cloud {
-      @include themify($themes) {
+      @include themify() {
         color: themed('textInverted');
       }
     }

@@ -28,7 +28,7 @@ export function TopNav(props: any) {
       const newAbortController = new AbortController();
       setAbortController(newAbortController);
 
-      fetch(`search/${query}`, {signal: newAbortController.signal})
+      fetch(`/search/${query}`, {signal: newAbortController.signal})
         .then((response) => response.json())
         .then((data) => {
           setSearchResults(data);

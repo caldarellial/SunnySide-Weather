@@ -1,0 +1,14 @@
+@import "../../styles/index.scss";
+
+.dayListing {
+  &:not(:first-child) {
+    padding-top: $content-spacing--8;
+  }
+
+  &:not(:last-child) {
+    @include themify() {
+      padding-bottom: $content-spacing--8;
+      border-bottom: 1px solid themed('divider');
+    }
+  }
+}
