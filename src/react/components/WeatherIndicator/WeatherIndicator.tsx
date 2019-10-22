@@ -36,6 +36,12 @@ export function WeatherIndicator(props: WeatherIndicatorProps) {
     return render;
   }
 
+  if (!props.weather) {
+    return (
+      <LoadingIndicator />
+    );
+  }
+
   return (
     <div className={[styles.container, props.size ? styles[props.size] : ''].join(' ')}>
       {info ? <i className={['fas', info!.icon, styles.icon].join(' ')} /> : <LoadingIndicator />}
