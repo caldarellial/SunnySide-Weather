@@ -7,10 +7,13 @@
 
   .day {
     font-weight: $font-weight--bold;
+    flex-basis: 100px;
   }
 
   .weather {
     font-size: $icon-size--large;
+    display: flex;
+    justify-content: center;
   }
 
   .temperature {
