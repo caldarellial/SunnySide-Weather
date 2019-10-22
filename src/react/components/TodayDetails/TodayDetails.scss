@@ -25,6 +25,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+
+    .title {
+      text-align: center;
+      margin-bottom: $content-spacing--4;
+      font-size: $font-size--large;
+    }
   }
 
   .details {

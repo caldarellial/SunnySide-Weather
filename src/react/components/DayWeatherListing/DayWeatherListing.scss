@@ -1,0 +1,24 @@
+@import '../../../styles/index.scss';
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  font-size: $font-size--large;
+
+  .day {
+    font-weight: $font-weight--bold;
+  }
+
+  .weather {
+    font-weight: $icon-size--large;
+  }
+
+  .temperature {
+    display: flex;
+
+    .high {
+      margin-right: $content-spacing--8;
+      font-weight: $font-weight--medium;
+    }
+  }
+}

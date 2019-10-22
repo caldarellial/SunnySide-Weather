@@ -52,6 +52,7 @@ export function TodayDetails(props: TodayDetailsProps) {
   return (
     <div className={styles.container}>
       <div className={styles.summary}>
+        <div className={styles.title}>{moment(daily.time).format('dddd')}</div>
         <WeatherIndicator weather={currently} size='large' />
       </div>
       <div className={styles.details}>

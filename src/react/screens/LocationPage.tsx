@@ -9,6 +9,7 @@ import LocationHeader from '../components/LocationHeader/LocationHeader';
 import LoadingIndicator from '../components/LoadingIndicator/LoadingIndicator';
 import ErrorIndicator from '../components/Error/Error';
 import TodayDetails from '../components/TodayDetails/TodayDetails';
+import DayWeatherListing from '../components/DayWeatherListing/DayWeatherListing';
 
 interface LocationPageProps {
   location: any;
@@ -36,12 +37,18 @@ export function LocationPage(props: LocationPageProps) {
   }
 
   function renderWeather() {
+    const weekWeather = weather.daily.data.slice(1,8);
+
+    const days = weekWeather.map((day: any) => <DayWeatherListing weather={day} />);
+
+    console.log(days, <div></div>);
+
     return [
       <Section borderBottom>
         <TodayDetails weather={weather} />
       </Section>,
       <Section>
-
+        
       </Section>
     ];
   }
