@@ -42,7 +42,7 @@ export function TodayDetails(props: TodayDetailsProps) {
       </div>,
       <div className={styles.detail}>
         <div className={styles.title}>Wind Speed</div>
-        <div className={styles.value}>{currently.windSpeed} mph</div>
+        <div className={styles.value}>{Math.round(currently.windSpeed)} mph</div>
       </div>
     ];
 

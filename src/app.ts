@@ -30,9 +30,11 @@ app.use('/react', express.static(path.join(__dirname, 'react')));
 // Endpoints //
 app.get('/', (req: Request, res: Response) => {
   if (req.ipInfo.zipcode) {
-    geocoder.search(req.ipInfo.zipcode)
+    geocoder.search(`${req.ipInfo.city} ${req.ipInfo.region} ${req.ipInfo.country}`)
       .then((data) => {
-        return res.redirect(`/location/${data.results[0].place_id}`);
+        return res.render('index', {
+          detectedLocation: JSON.stringify(data.results[0])
+        });
       })
   } else {
     res.render('index');

@@ -1,0 +1,35 @@
+@import '../../../styles/index.scss';
+
+.container {
+  padding: $content-spacing--8 $content-spacing--4 $content-spacing--4*1.5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: $content-spacing--4;
+
+  .detected {
+    font-size: $font-size--medium;
+
+    .location {
+      font-weight: $font-weight--medium;
+    }
+
+    .link {
+      margin-left: $content-spacing--4;
+
+      @include themify() {
+        color: themed('textPrimary');
+      }
+    }
+  }
+
+  .dismiss {
+    font-size: $icon-size--large;
+  }
+
+  @include themify() {
+    color: themed('textPrimary');
+    background: themed('cardColor');
+    border: 1px solid themed('divider');
+  }
+}

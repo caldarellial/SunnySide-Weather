@@ -60,10 +60,10 @@ export function TopNav(props: any) {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <div className={styles.logoContainer}>
+        <a className={styles.logoContainer} href='/'>
           <Logo color={activeTheme === 'light' ? 'colorized' : 'normal'} />
           <p className={styles.title}>SunnySide</p>
-        </div>
+        </a>
         <div className={styles.searchContainer}>
           <input className={styles.search} type='text' onChange={(event) => setQuery(event.target.value)}></input>
           <i className={['fas fa-search', styles.icon].join(' ')} />
