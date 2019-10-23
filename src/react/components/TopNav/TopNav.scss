@@ -18,6 +18,12 @@
 
     @include useDevice(phones) {
       width: 100%;
+
+      .searchContainer {
+        .search {
+          font-size: 16px; // Minimum to prevent auto-zoom
+        }
+      }
     }
 
     @include useDevice(desktops) {
