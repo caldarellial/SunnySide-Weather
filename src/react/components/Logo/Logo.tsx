@@ -17,7 +17,7 @@ export function Logo(props: LogoProps) {
   return (
     <div className={[styles.container, styles[`size_${size}`], styles[`color_${color}`]].join(' ')}>
       <i className={['fas fa-cloud', styles.cloud].join(' ')} />
-      <i className={['fas fa-sun', styles.sun].join(' ')} />
+      <i className={['fas fa-circle', styles.sun].join(' ')} />
     </div>
   )
 }

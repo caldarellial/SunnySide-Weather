@@ -2,12 +2,12 @@ import { Request as ExpressRequest, Response } from 'express';
 import path from 'path';
 
 const express = require('express');
-const expressIp = require('express-ip');
 const dotenv = require('dotenv');
 
 import { 
   geocoder,
-  darksky
+  darksky,
+  ipLookupMiddleware
 } from './services';
 
 dotenv.config();
@@ -21,15 +21,16 @@ interface Request extends ExpressRequest {
 // Configuration//
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'twig');
+app.set('trust proxy', true)
 
 // Middleware //
-app.use(expressIp().getIpInfoMiddleware); // Fails when IP is localhost
+app.use(ipLookupMiddleware); // Fails when IP is localhost
 app.use('/styles', express.static(path.join(__dirname, 'styles')));
 app.use('/react', express.static(path.join(__dirname, 'react')));
 
 // Endpoints //
 app.get('/', (req: Request, res: Response) => {
-  if (req.ipInfo.zipcode) {
+  if (req.ipInfo && !req.ipInfo.error) {
     geocoder.search(`${req.ipInfo.city} ${req.ipInfo.region} ${req.ipInfo.country}`)
       .then((data) => {
         return res.render('index', {
