@@ -65,14 +65,9 @@ function browserifyTask() {
 }
 
 function browserifyFull() {
-  return gulp.src('build/react/**/*.js', {read: false}) // no need of reading file because browserify does.
-
-    // transform file objects using gulp-tap plugin
+  return gulp.src('build/react/**/*.js', {read: false})
     .pipe(tap(function (file) {
-
       console.log('bundling ' + file.path);
-
-      // replace file contents with browserify's bundle stream
       file.contents = browserify(file.path, {debug: true}).bundle();
 
     }))
