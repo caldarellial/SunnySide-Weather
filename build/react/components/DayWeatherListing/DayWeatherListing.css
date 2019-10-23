@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px; }
+  .container .day {
+    font-weight: 700;
+    flex-basis: 100px; }
+  .container .weather {
+    font-size: 24px;
+    display: flex;
+    justify-content: center; }
+  .container .temperature {
+    display: flex; }
+    .container .temperature .high {
+      margin-right: 8px;
+      font-weight: 500; }

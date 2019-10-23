@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center; }
+  .container .temperature {
+    font-size: 14px; }
+  .container .weather {
+    font-size: 18px; }
+  .container .icon {
+    display: block;
+    font-size: 34px; }
+  .container.large .icon {
+    font-size: 68px; }
+  .container.large .weather {
+    font-size: 18px; }
+  .container.large .temperature {
+    font-size: 24px; }

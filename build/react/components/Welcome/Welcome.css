@@ -1,0 +1,28 @@
+.container {
+  margin-bottom: 8px; }
+  .container .quote {
+    text-align: center;
+    text-decoration: none;
+    font-style: italic;
+    width: 100%;
+    display: block;
+    margin-bottom: 8px; }
+    :global(.theme-light) .container .quote {
+      border-bottom: 1px solid #f1f4f5;
+      color: #1a2325; }
+    :global(.theme-dark) .container .quote {
+      border-bottom: 1px solid #6c7274;
+      color: #fff; }
+  .container .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .container .content .logo {
+      flex-grow: 0; }
+    .container .content .text {
+      flex-grow: 1; }
+      :global(.theme-light) .container .content .text {
+        color: #1a2325; }
+      :global(.theme-dark) .container .content .text {
+        color: #fff; }

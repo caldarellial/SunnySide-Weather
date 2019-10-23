@@ -1,0 +1,17 @@
+{% extends './base.twig' %}
+
+{% block content %}
+  <div
+    id='detected-banner'
+    class='reactContainer'
+    data-location='{{ detectedLocation }}'
+  ></div>
+  <div id='welcome' class='reactContainer'></div>
+  <div id='homepage' class='reactContainer'></div>
+{% endblock %}
+
+{% block scripts %}
+  <script src='/react/screens/HomePage.js'></script>
+  <script src='/react/components/Welcome/Welcome.js'></script>
+  <script src='/react/components/DetectedBanner/DetectedBanner.js'></script>
+{% endblock %}

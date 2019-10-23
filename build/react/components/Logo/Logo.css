@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; }
+  .container .sun {
+    font-size: 0.5em;
+    position: absolute;
+    transform: translateY(15%); }
+  .container.size_normal {
+    font-size: 24px; }
+  .container.size_xl {
+    font-size: 256px; }
+  :global(.theme-light) .container.color_normal .sun {
+    color: #fff; }
+  :global(.theme-dark) .container.color_normal .sun {
+    color: #1a2325; }
+  :global(.theme-light) .container.color_normal .cloud {
+    color: #1a2325; }
+  :global(.theme-dark) .container.color_normal .cloud {
+    color: #fff; }
+  :global(.theme-light) .container.color_inverted .sun {
+    color: #1a2325; }
+  :global(.theme-dark) .container.color_inverted .sun {
+    color: #fff; }
+  :global(.theme-light) .container.color_inverted .cloud {
+    color: #fff; }
+  :global(.theme-dark) .container.color_inverted .cloud {
+    color: #1a2325; }
+  .container.color_colorized .sun {
+    color: #ffc42b; }
+  .container.color_colorized .cloud {
+    color: #fff; }

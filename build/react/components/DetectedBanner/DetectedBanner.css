@@ -1,0 +1,26 @@
+.container {
+  padding: 8px 4px 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px; }
+  .container .detected {
+    font-size: 14px; }
+    .container .detected .location {
+      font-weight: 500; }
+    .container .detected .link {
+      margin-left: 4px; }
+      :global(.theme-light) .container .detected .link {
+        color: #1a2325; }
+      :global(.theme-dark) .container .detected .link {
+        color: #fff; }
+  .container .dismiss {
+    font-size: 24px; }
+  :global(.theme-light) .container {
+    color: #1a2325;
+    background: #fff;
+    border: 1px solid #f1f4f5; }
+  :global(.theme-dark) .container {
+    color: #fff;
+    background: #3e4648;
+    border: 1px solid #6c7274; }
