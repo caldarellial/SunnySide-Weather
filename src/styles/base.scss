@@ -21,23 +21,18 @@ body {
 
     @include useDevice(phones) {
       padding-top: 82px;
+      width: 100%;
     }
   
     @include useDevice(desktops) {
       padding-top: 82px;
+      width: $max-content-width;
+      max-width: 100%;
     }
   
     .content {
       padding: $content-spacing--16 $content-spacing--8;
       width: 100%;
-    }
-  
-    @include useDevice(phones) {
-      width: 100%;
-    }
-  
-    @include useDevice(desktops) {
-      width: $max-content-width;
     }
   }
 }

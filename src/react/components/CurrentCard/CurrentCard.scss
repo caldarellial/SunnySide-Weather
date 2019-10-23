@@ -5,7 +5,9 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
+
   .city {
     font-size: $font-size--large;
+    font-weight: $font-weight--medium;
   }
 }

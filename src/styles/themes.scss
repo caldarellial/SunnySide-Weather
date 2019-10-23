@@ -53,10 +53,11 @@ $themes: (
     divider: $pallet-gray--300,
     topNavBackground: $pallet-gray--500,
     textTopNav: $pallet-white,
-    searchBackground: rgba($pallet-white, .6)
+    searchBackground: rgba($pallet-white, .2)
   )
 );
 
+// adapted from https://medium.com/@dmitriy.borodiy/easy-color-theming-with-scss-bc38fd5734d1 for use with CSS modules
 @mixin useTheme($themes: $themes, $global: false, $body: false) {
   @each $theme, $map in $themes {
 

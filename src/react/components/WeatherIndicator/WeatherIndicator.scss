@@ -7,11 +7,11 @@
   text-align: center;
 
   .temperature {
-    font-size: $font-size--small;
+    font-size: $font-size--medium;
   }
 
   .weather {
-    font-size: $font-size--medium;
+    font-size: $font-size--large;
   }
 
   .icon {
@@ -25,11 +25,11 @@
     }
     
     .weather {
-      $font-size: $font-size--large;
+      font-size: $font-size--large;
     }
 
     .temperature {
-      $font-size: $font-size--medium;
+      font-size: $font-size--xl;
     }
   }
 }

@@ -12,16 +12,23 @@
   }
 
   .content {
-    padding: $content-spacing--16;
     display: flex;
     align-items: center;
+    padding: $content-spacing--16;
 
     @include useDevice(phones) {
       width: 100%;
+
+      .searchContainer {
+        .search {
+          font-size: 16px; // Minimum to prevent auto-zoom
+        }
+      }
     }
 
     @include useDevice(desktops) {
       width: $max-content-width;
+      max-width: 100%;
     }
 
     .logoContainer {
