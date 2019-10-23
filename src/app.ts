@@ -81,4 +81,4 @@ app.get('/weather/:lat?/:lon?', (req: Request, res: Response) => {
     .catch((err) => res.status(400).send(err));
 })
 
-app.listen(3000);
+app.listen(8080);
