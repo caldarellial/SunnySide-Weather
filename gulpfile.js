@@ -50,20 +50,6 @@ function twig() {
     .pipe(gulp.dest('./build/'));
 }
 
-function browserifyTask() {
-  // set up the browserify instance on a task basis
-  var b = browserify({
-    entries: './build/react/screens/HomePage.js',
-    debug: true
-  });
-
-  return b.bundle()
-    .pipe(source('screens.js'))
-    .pipe(buffer())
-    // .pipe(uglify())
-    .pipe(gulp.dest('./build/react/screens'));
-}
-
 function browserifyFull() {
   return gulp.src('build/react/**/*.js', {read: false})
     .pipe(tap(function (file) {
